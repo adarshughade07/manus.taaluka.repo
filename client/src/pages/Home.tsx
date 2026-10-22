@@ -164,37 +164,6 @@ function Countdown() {
   );
 }
 
-function LocalIllustration() {
-  return (
-    <div
-      className="local-illustration"
-      aria-label="Akole inspired landscape illustration"
-      role="img"
-    >
-      <div className="illustration-stamp">
-        AKOLE
-        <br />
-        <span>MAHARASHTRA</span>
-      </div>
-      <div className="orbit orbit--one" />
-      <div className="orbit orbit--two" />
-      <div className="sun-mark" />
-      <div className="mountains mountains--back" />
-      <div className="mountains mountains--front" />
-      <div className="route-line">
-        <span />
-        <span />
-        <span />
-      </div>
-      <div className="village-dot village-dot--one" />
-      <div className="village-dot village-dot--two" />
-      <div className="illustration-caption">
-        <span className="live-dot" /> आपल्या लोकांसाठी, आपल्या तालुक्यात
-      </div>
-    </div>
-  );
-}
-
 function ProgressPanel({
   status,
   onShare,
@@ -403,7 +372,6 @@ export default function Home() {
             </div>
           </div>
           <div className="hero-art-wrap">
-            <LocalIllustration />
             <div className="hero-countdown-card">
               <Countdown />
             </div>

@@ -1154,14 +1154,9 @@ h2 em {
     padding: 92px 18px 62px;
     grid-template-rows: auto 1fr;
     background-image:
-      linear-gradient(
-        180deg,
-        rgba(248, 246, 244, 0.9) 0%,
-        rgba(248, 246, 244, 0.77) 58%,
-        rgba(248, 246, 244, 0.63) 100%
-      ),
-      url("/manus-storage/pasted_file_o3CqfW_cc32bebb-483d-49ec-a10e-d00bf0556e1e_b3ff7858.png");
-    background-position: center 62%;
+      linear-gradient(rgba(248, 246, 244, 0.6), rgba(248, 246, 244, 0.6)),
+      url("/manus-storage/akole-mobile-hero_3f7e3c53.png");
+    background-position: center top;
   }
   .hero-section::before {
     top: 24px;

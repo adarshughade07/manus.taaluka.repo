@@ -94,11 +94,15 @@ a {
   height: auto;
   display: block;
 }
-.brand-lockup span {
+.brand-lockup .eyebrow {
+  display: block;
+  gap: 0;
   border-left: 1px solid var(--line);
   padding-left: 13px;
   color: var(--muted);
   font-size: 10px;
+  font-weight: 400;
+  line-height: normal;
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
@@ -592,7 +596,7 @@ h2 em {
 }
 .waitlist-form {
   display: grid;
-  grid-template-columns: 1fr auto;
+  grid-template-columns: 1fr 1fr auto;
   gap: 9px;
 }
 .input-shell {
@@ -1176,7 +1180,7 @@ h2 em {
   .brand-lockup img {
     width: 112px;
   }
-  .brand-lockup span,
+  .brand-lockup .eyebrow,
   .desktop-nav {
     display: none;
   }

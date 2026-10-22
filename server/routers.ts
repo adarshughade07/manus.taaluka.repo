@@ -1,6 +1,6 @@
 import { z } from "zod";
 import {
-  normalizeWaitlistContact,
+  normalizeWaitlistMobile,
   getWaitlistEntryByReferralCode,
   getWaitlistStats,
   getWaitlistStatusByEntry,
@@ -12,7 +12,8 @@ import { systemRouter } from "./_core/systemRouter";
 import { publicProcedure, router } from "./_core/trpc";
 import { TRPCError } from "@trpc/server";
 
-const contactSchema = z.string().trim().min(3).max(320);
+const nameSchema = z.string().trim().min(2).max(120);
+const mobileSchema = z.string().trim().min(10).max(20);
 
 export const appRouter = router({
   system: systemRouter,
@@ -29,14 +30,16 @@ export const appRouter = router({
     register: publicProcedure
       .input(
         z.object({
-          contact: contactSchema,
+          name: nameSchema,
+          mobile: mobileSchema,
           referralCode: z.string().trim().max(16).optional(),
         })
       )
       .mutation(async ({ input }) => {
         try {
-          const normalized = normalizeWaitlistContact(input.contact);
+          const normalized = normalizeWaitlistMobile(input.mobile);
           const result = await registerWaitlistEntry({
+            name: input.name.trim(),
             ...normalized,
             referredBy: input.referralCode?.toUpperCase(),
           });

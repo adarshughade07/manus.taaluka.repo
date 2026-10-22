@@ -15,6 +15,13 @@
       "when": 1792657828779,
       "tag": "0001_lumpy_riptide",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1792660063233,
+      "tag": "0002_normal_mystique",
+      "breakpoints": true
     }
   ]
 }

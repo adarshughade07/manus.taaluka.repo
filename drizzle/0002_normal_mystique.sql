@@ -1,0 +1,1 @@
+ALTER TABLE `waitlistEntries` ADD `name` varchar(120);

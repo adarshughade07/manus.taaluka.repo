@@ -75,21 +75,14 @@ export async function getUserByOpenId(
   return result[0];
 }
 
-export function normalizeWaitlistContact(input: string) {
-  const value = input.trim();
-  const email = value.toLowerCase();
-  if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-    return { contact: email, contactType: "email" as const };
-  }
-  const digits = value.replace(/\D/g, "");
+export function normalizeWaitlistMobile(input: string) {
+  const digits = input.trim().replace(/\D/g, "");
   const indianMobile =
     digits.length === 12 && digits.startsWith("91") ? digits.slice(2) : digits;
   if (/^[6-9]\d{9}$/.test(indianMobile)) {
     return { contact: `+91${indianMobile}`, contactType: "mobile" as const };
   }
-  throw new Error(
-    "Please enter a valid email address or Indian mobile number."
-  );
+  throw new Error("कृपया valid Indian mobile number टाका.");
 }
 
 async function getQueuePosition(
@@ -171,10 +164,12 @@ export async function getWaitlistStatusByEntry(entry: WaitlistEntry) {
 }
 
 export async function registerWaitlistEntry({
+  name,
   contact,
   contactType,
   referredBy,
 }: {
+  name: string;
   contact: string;
   contactType: "email" | "mobile";
   referredBy?: string;
@@ -198,6 +193,7 @@ export async function registerWaitlistEntry({
     ? await getWaitlistEntryByReferralCode(referredBy)
     : undefined;
   const insert: InsertWaitlistEntry = {
+    name,
     contact,
     contactType,
     referralCode,

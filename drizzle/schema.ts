@@ -23,6 +23,7 @@ export const users = mysqlTable("users", {
 /** One durable, unique waitlist record per normalized email or mobile number. */
 export const waitlistEntries = mysqlTable("waitlistEntries", {
   id: int("id").autoincrement().primaryKey(),
+  name: varchar("name", { length: 120 }),
   contact: varchar("contact", { length: 320 }).notNull().unique(),
   contactType: mysqlEnum("contactType", ["email", "mobile"]).notNull(),
   referralCode: varchar("referralCode", { length: 16 }).notNull().unique(),

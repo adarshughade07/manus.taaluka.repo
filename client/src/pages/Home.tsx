@@ -23,6 +23,29 @@ const LAUNCH_DATE =
 const WHATSAPP_MESSAGE =
   "अकोल्यासाठी काहीतरी खास येतंय — Taaluka च्या early access मध्ये माझ्यासोबत या!";
 
+async function submitToNetlify(name: string, mobile: string) {
+  if (typeof window === "undefined") return;
+  const host = window.location.hostname;
+  const isNetlifyHost =
+    host.endsWith(".netlify.app") || host.endsWith(".netlify.com");
+  if (!isNetlifyHost) return;
+
+  const body = new URLSearchParams({
+    "form-name": "taaluka-waitlist",
+    name,
+    mobile,
+  });
+  try {
+    await fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body,
+    });
+  } catch {
+    // The managed API remains the source of truth if Netlify capture is unavailable.
+  }
+}
+
 const benefits = [
   {
     number: "01",
@@ -54,7 +77,7 @@ type WaitlistStatus = {
 };
 
 type FormProps = {
-  onSubmit: (contact: string) => void;
+  onSubmit: (name: string, mobile: string) => void;
   isPending: boolean;
   error?: string;
   buttonLabel: string;
@@ -68,33 +91,60 @@ function WaitlistForm({
   buttonLabel,
   compact = false,
 }: FormProps) {
-  const [contact, setContact] = useState("");
+  const [name, setName] = useState("");
+  const [mobile, setMobile] = useState("");
 
   const submit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    onSubmit(contact);
+    onSubmit(name, mobile);
   };
 
   return (
     <form
       className={`waitlist-form ${compact ? "waitlist-form--compact" : ""}`}
+      name="taaluka-waitlist"
+      method="POST"
+      data-netlify="true"
+      data-netlify-honeypot="bot-field"
       onSubmit={submit}
     >
+      <input type="hidden" name="form-name" value="taaluka-waitlist" />
+      <input type="hidden" name="bot-field" />
       <label
         className="sr-only"
-        htmlFor={compact ? "closing-contact" : "hero-contact"}
+        htmlFor={compact ? "closing-name" : "hero-name"}
       >
-        Email किंवा mobile number
+        तुमचे नाव
+      </label>
+      <div className="input-shell input-shell--name">
+        <input
+          id={compact ? "closing-name" : "hero-name"}
+          name="name"
+          value={name}
+          onChange={event => setName(event.target.value)}
+          placeholder="तुमचे नाव"
+          autoComplete="name"
+          aria-describedby={
+            error ? `${compact ? "closing" : "hero"}-form-error` : undefined
+          }
+        />
+      </div>
+      <label
+        className="sr-only"
+        htmlFor={compact ? "closing-mobile" : "hero-mobile"}
+      >
+        Mobile number
       </label>
       <div className="input-shell">
         <span className="input-prefix">+91</span>
         <input
-          id={compact ? "closing-contact" : "hero-contact"}
-          value={contact}
-          onChange={event => setContact(event.target.value)}
-          placeholder="Email किंवा mobile number"
-          autoComplete="email tel"
-          inputMode="email"
+          id={compact ? "closing-mobile" : "hero-mobile"}
+          name="mobile"
+          value={mobile}
+          onChange={event => setMobile(event.target.value)}
+          placeholder="Mobile number"
+          autoComplete="tel"
+          inputMode="tel"
           aria-describedby={
             error ? `${compact ? "closing" : "hero"}-form-error` : undefined
           }
@@ -268,9 +318,12 @@ export default function Home() {
     },
   });
 
-  const register = (contact: string) => {
+  const register = (name: string, mobile: string) => {
     setShareNotice("");
-    registerMutation.mutate({ contact, referralCode });
+    registerMutation.mutate(
+      { name, mobile, referralCode },
+      { onSuccess: () => void submitToNetlify(name, mobile) }
+    );
   };
 
   const share = async () => {
@@ -311,11 +364,10 @@ export default function Home() {
       <header className="site-header">
         <a className="brand-lockup" href="#top" aria-label="Taaluka home">
           <img src={LOGO_URL} alt="Taaluka" />
-          <span>अकोले, महाराष्ट्र</span>
+          <span className="eyebrow">अकोले, महाराष्ट्र</span>
         </a>
         <nav className="desktop-nav" aria-label="Main navigation">
           <a href="#why-taaluka">का Taaluka?</a>
-          <a href="#join">Early access</a>
           <a className="nav-cta" href="#join">
             माझी जागा निश्चित करा <ArrowRight size={15} />
           </a>

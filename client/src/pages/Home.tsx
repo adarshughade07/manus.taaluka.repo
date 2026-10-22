@@ -433,6 +433,7 @@ export default function Home() {
             <div className="eyebrow">
               <span className="eyebrow-line" /> AKOLE • MAHARASHTRA
             </div>
+            <p className="hero-tagline">आपल्या तालुक्याचे आपले ॲप</p>
             <h1>
               आपल्या अकोल्याचा
               <br />

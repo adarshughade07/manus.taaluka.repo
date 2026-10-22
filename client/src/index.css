@@ -204,6 +204,13 @@ a {
   display: inline-block;
   background: var(--red);
 }
+.hero-tagline {
+  margin: 17px 0 -7px;
+  color: var(--red-deep);
+  font-size: clamp(16px, 2vw, 22px);
+  font-weight: 800;
+  letter-spacing: -0.025em;
+}
 h1,
 h2,
 h3,
@@ -1167,6 +1174,10 @@ h2 em {
   }
   .eyebrow {
     font-size: 8px;
+  }
+  .hero-tagline {
+    margin-top: 14px;
+    font-size: 15px;
   }
   .hero-subtitle {
     font-size: 14px;

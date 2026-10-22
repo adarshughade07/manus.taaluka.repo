@@ -12,8 +12,17 @@ import { systemRouter } from "./_core/systemRouter";
 import { publicProcedure, router } from "./_core/trpc";
 import { TRPCError } from "@trpc/server";
 
-const nameSchema = z.string().trim().min(2).max(120);
-const mobileSchema = z.string().trim().min(10).max(20);
+const nameSchema = z
+  .string()
+  .trim()
+  .min(2, "कृपया तुमचे नाव टाका.")
+  .max(120, "नाव 120 अक्षरांपेक्षा मोठे असू नये.")
+  .regex(/^[\p{L}][\p{L}\s.'-]*$/u, "कृपया valid नाव टाका.");
+const mobileSchema = z
+  .string()
+  .trim()
+  .min(10, "कृपया mobile number टाका.")
+  .max(20, "कृपया valid mobile number टाका.");
 
 export const appRouter = router({
   system: systemRouter,
@@ -32,7 +41,12 @@ export const appRouter = router({
         z.object({
           name: nameSchema,
           mobile: mobileSchema,
-          referralCode: z.string().trim().max(16).optional(),
+          referralCode: z
+            .string()
+            .trim()
+            .max(16)
+            .regex(/^[a-z0-9]+$/i, "Invalid referral code.")
+            .optional(),
         })
       )
       .mutation(async ({ input }) => {

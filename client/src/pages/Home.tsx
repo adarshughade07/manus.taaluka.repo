@@ -23,12 +23,23 @@ const LAUNCH_DATE =
 const WHATSAPP_MESSAGE =
   "अकोल्यासाठी काहीतरी खास येतंय — Taaluka च्या early access मध्ये माझ्यासोबत या!";
 
+function friendlyRegistrationError(message?: string) {
+  if (!message) return undefined;
+  if (/fetch|network|offline|failed to connect/i.test(message)) {
+    return "Internet connection तपासा आणि पुन्हा प्रयत्न करा.";
+  }
+  if (/database|unavailable|temporarily/i.test(message)) {
+    return "नोंदणी सेवा सध्या तात्पुरती unavailable आहे. थोड्या वेळाने पुन्हा प्रयत्न करा.";
+  }
+  return message;
+}
+
 async function submitToNetlify(name: string, mobile: string) {
-  if (typeof window === "undefined") return;
+  if (typeof window === "undefined") return true;
   const host = window.location.hostname;
   const isNetlifyHost =
     host.endsWith(".netlify.app") || host.endsWith(".netlify.com");
-  if (!isNetlifyHost) return;
+  if (!isNetlifyHost) return true;
 
   const body = new URLSearchParams({
     "form-name": "taaluka-waitlist",
@@ -36,13 +47,15 @@ async function submitToNetlify(name: string, mobile: string) {
     mobile,
   });
   try {
-    await fetch("/", {
+    const response = await fetch("/", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body,
     });
+    return response.ok;
   } catch {
     // The managed API remains the source of truth if Netlify capture is unavailable.
+    return false;
   }
 }
 
@@ -84,6 +97,11 @@ type FormProps = {
   compact?: boolean;
 };
 
+type FormErrors = {
+  name?: string;
+  mobile?: string;
+};
+
 function WaitlistForm({
   onSubmit,
   isPending,
@@ -93,10 +111,41 @@ function WaitlistForm({
 }: FormProps) {
   const [name, setName] = useState("");
   const [mobile, setMobile] = useState("");
+  const [fieldErrors, setFieldErrors] = useState<FormErrors>({});
+  const formId = compact ? "closing" : "hero";
+
+  const validate = () => {
+    const nextErrors: FormErrors = {};
+    const trimmedName = name.trim();
+    const trimmedMobile = mobile.trim();
+    const digits = trimmedMobile.replace(/\D/g, "");
+    const indianMobile =
+      digits.length === 12 && digits.startsWith("91")
+        ? digits.slice(2)
+        : digits;
+
+    if (trimmedName.length < 2) {
+      nextErrors.name = "कृपया तुमचे नाव टाका.";
+    } else if (!/\p{L}/u.test(trimmedName)) {
+      nextErrors.name = "कृपया valid नाव टाका.";
+    }
+
+    if (
+      !/^\+?[\d\s()-]+$/.test(trimmedMobile) ||
+      !/^[6-9]\d{9}$/.test(indianMobile)
+    ) {
+      nextErrors.mobile = "कृपया 10 अंकी valid mobile number टाका.";
+    }
+
+    setFieldErrors(nextErrors);
+    return { nextErrors, trimmedName };
+  };
 
   const submit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    onSubmit(name, mobile);
+    const { nextErrors, trimmedName } = validate();
+    if (Object.keys(nextErrors).length > 0) return;
+    onSubmit(trimmedName, mobile.trim());
   };
 
   return (
@@ -106,49 +155,76 @@ function WaitlistForm({
       method="POST"
       data-netlify="true"
       data-netlify-honeypot="bot-field"
+      noValidate
       onSubmit={submit}
     >
       <input type="hidden" name="form-name" value="taaluka-waitlist" />
       <input type="hidden" name="bot-field" />
-      <label
-        className="sr-only"
-        htmlFor={compact ? "closing-name" : "hero-name"}
-      >
-        तुमचे नाव
-      </label>
-      <div className="input-shell input-shell--name">
-        <input
-          id={compact ? "closing-name" : "hero-name"}
-          name="name"
-          value={name}
-          onChange={event => setName(event.target.value)}
-          placeholder="तुमचे नाव"
-          autoComplete="name"
-          aria-describedby={
-            error ? `${compact ? "closing" : "hero"}-form-error` : undefined
-          }
-        />
+      <div className="form-field">
+        <label className="sr-only" htmlFor={`${formId}-name`}>
+          तुमचे नाव
+        </label>
+        <div
+          className={`input-shell ${fieldErrors.name ? "input-shell--error" : ""}`}
+        >
+          <input
+            id={`${formId}-name`}
+            name="name"
+            value={name}
+            onChange={event => {
+              setName(event.target.value);
+              if (fieldErrors.name) {
+                setFieldErrors(current => ({ ...current, name: undefined }));
+              }
+            }}
+            placeholder="तुमचे नाव"
+            autoComplete="name"
+            required
+            aria-invalid={Boolean(fieldErrors.name)}
+            aria-describedby={
+              fieldErrors.name ? `${formId}-name-error` : undefined
+            }
+          />
+        </div>
+        {fieldErrors.name && (
+          <p className="field-error" id={`${formId}-name-error`} role="alert">
+            {fieldErrors.name}
+          </p>
+        )}
       </div>
-      <label
-        className="sr-only"
-        htmlFor={compact ? "closing-mobile" : "hero-mobile"}
-      >
-        Mobile number
-      </label>
-      <div className="input-shell">
-        <span className="input-prefix">+91</span>
-        <input
-          id={compact ? "closing-mobile" : "hero-mobile"}
-          name="mobile"
-          value={mobile}
-          onChange={event => setMobile(event.target.value)}
-          placeholder="Mobile number"
-          autoComplete="tel"
-          inputMode="tel"
-          aria-describedby={
-            error ? `${compact ? "closing" : "hero"}-form-error` : undefined
-          }
-        />
+      <div className="form-field">
+        <label className="sr-only" htmlFor={`${formId}-mobile`}>
+          Mobile number
+        </label>
+        <div
+          className={`input-shell ${fieldErrors.mobile ? "input-shell--error" : ""}`}
+        >
+          <span className="input-prefix">+91</span>
+          <input
+            id={`${formId}-mobile`}
+            name="mobile"
+            value={mobile}
+            onChange={event => {
+              setMobile(event.target.value);
+              if (fieldErrors.mobile) {
+                setFieldErrors(current => ({ ...current, mobile: undefined }));
+              }
+            }}
+            placeholder="Mobile number"
+            autoComplete="tel"
+            inputMode="tel"
+            required
+            aria-invalid={Boolean(fieldErrors.mobile)}
+            aria-describedby={
+              fieldErrors.mobile ? `${formId}-mobile-error` : undefined
+            }
+          />
+        </div>
+        {fieldErrors.mobile && (
+          <p className="field-error" id={`${formId}-mobile-error`} role="alert">
+            {fieldErrors.mobile}
+          </p>
+        )}
       </div>
       <button
         className="button button--primary"
@@ -322,9 +398,21 @@ export default function Home() {
     setShareNotice("");
     registerMutation.mutate(
       { name, mobile, referralCode },
-      { onSuccess: () => void submitToNetlify(name, mobile) }
+      {
+        onSuccess: async () => {
+          const netlifySaved = await submitToNetlify(name, mobile);
+          if (!netlifySaved) {
+            toast.warning("नोंदणी झाली; Netlify sync सध्या उपलब्ध नाही.");
+          }
+        },
+      }
     );
   };
+
+  const statsUnavailable = stats.isError || stats.data?.available === false;
+  const registeredCount = statsUnavailable
+    ? "—"
+    : (stats.data?.totalCount ?? 0).toLocaleString("en-IN");
 
   const share = async () => {
     if (!status) {
@@ -416,10 +504,10 @@ export default function Home() {
             <div className="hero-trust">
               <Users size={16} />{" "}
               <span>
-                <strong>
-                  {(stats.data?.totalCount ?? 0).toLocaleString("en-IN")}
-                </strong>{" "}
-                लोकांनी सुरुवात केली आहे
+                <strong>{registeredCount}</strong>{" "}
+                {statsUnavailable
+                  ? "नोंदणीचा live आकडा सध्या उपलब्ध नाही"
+                  : "लोकांनी सुरुवात केली आहे"}
               </span>
             </div>
           </div>
@@ -443,7 +531,7 @@ export default function Home() {
             <WaitlistForm
               onSubmit={register}
               isPending={registerMutation.isPending}
-              error={registerMutation.error?.message}
+              error={friendlyRegistrationError(registerMutation.error?.message)}
               buttonLabel="Early Access मिळवा"
             />
             {referralCode && (
@@ -529,13 +617,13 @@ export default function Home() {
               </h2>
             </div>
             <div className="proof-stat">
-              <div className="proof-number">
-                {(stats.data?.totalCount ?? 0).toLocaleString("en-IN")}
-              </div>
+              <div className="proof-number">{registeredCount}</div>
               <span>registered for early access</span>
               <div className="proof-live">
-                <span className="live-dot" /> live count · real registrations
-                only
+                {!statsUnavailable && <span className="live-dot" />}{" "}
+                {statsUnavailable
+                  ? "live count unavailable"
+                  : "live count · real registrations only"}
               </div>
             </div>
           </div>
@@ -555,7 +643,7 @@ export default function Home() {
             <WaitlistForm
               onSubmit={register}
               isPending={registerMutation.isPending}
-              error={registerMutation.error?.message}
+              error={friendlyRegistrationError(registerMutation.error?.message)}
               buttonLabel="माझी जागा निश्चित करा"
               compact
             />

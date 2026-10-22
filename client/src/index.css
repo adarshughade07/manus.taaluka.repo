@@ -597,7 +597,11 @@ h2 em {
 .waitlist-form {
   display: grid;
   grid-template-columns: 1fr 1fr auto;
+  align-items: start;
   gap: 9px;
+}
+.form-field {
+  min-width: 0;
 }
 .input-shell {
   display: flex;
@@ -607,6 +611,10 @@ h2 em {
   border-radius: 999px;
   padding: 0 16px;
   background: rgba(255, 255, 255, 0.14);
+}
+.input-shell--error {
+  border-color: #ff9c8d;
+  box-shadow: 0 0 0 2px rgba(255, 156, 141, 0.16);
 }
 .input-prefix {
   margin-right: 8px;
@@ -650,6 +658,12 @@ h2 em {
   margin: 5px 10px 0;
   color: #ffd4c8;
   font-size: 11px;
+}
+.field-error {
+  margin: 5px 10px 0;
+  color: #ffd4c8;
+  font-size: 10px;
+  line-height: 1.35;
 }
 .referral-note {
   display: flex;
@@ -992,6 +1006,10 @@ h2 em {
   border-color: var(--line);
   background: var(--white);
 }
+.closing-inner .input-shell.input-shell--error {
+  border-color: var(--red);
+  box-shadow: 0 0 0 2px rgba(200, 33, 33, 0.12);
+}
 .closing-inner .input-prefix {
   color: #948b86;
 }
@@ -1005,6 +1023,9 @@ h2 em {
   justify-content: center;
   margin-left: 0;
   color: var(--muted);
+}
+.closing-inner .field-error {
+  color: var(--red-deep);
 }
 .closing-inner .form-error {
   color: var(--red);

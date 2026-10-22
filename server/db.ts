@@ -76,7 +76,11 @@ export async function getUserByOpenId(
 }
 
 export function normalizeWaitlistMobile(input: string) {
-  const digits = input.trim().replace(/\D/g, "");
+  const value = input.trim();
+  if (!/^\+?[\d\s()-]+$/.test(value)) {
+    throw new Error("कृपया फक्त mobile number टाका.");
+  }
+  const digits = value.replace(/\D/g, "");
   const indianMobile =
     digits.length === 12 && digits.startsWith("91") ? digits.slice(2) : digits;
   if (/^[6-9]\d{9}$/.test(indianMobile)) {

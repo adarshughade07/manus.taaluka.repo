@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState, type FormEvent } from "react";
+import { useMemo, useState, type FormEvent } from "react";
 import {
   ArrowRight,
   Check,
@@ -8,7 +8,6 @@ import {
   Link2,
   MapPin,
   MessageCircle,
-  Play,
   ShieldCheck,
   Sparkles,
   Users,
@@ -18,8 +17,6 @@ import { toast } from "sonner";
 import { trpc } from "@/lib/trpc";
 
 const LOGO_URL = "/manus-storage/taaluka__1_-removebg-preview_cadf55b2.png";
-const LAUNCH_DATE =
-  import.meta.env.VITE_TAALUKA_LAUNCH_DATE || "2026-12-01T18:00:00+05:30";
 const WHATSAPP_MESSAGE =
   "अकोल्यासाठी काहीतरी खास येतंय — Taaluka च्या early access मध्ये माझ्यासोबत या!";
 
@@ -251,45 +248,6 @@ function WaitlistForm({
   );
 }
 
-function Countdown() {
-  const target = useMemo(() => new Date(LAUNCH_DATE).getTime(), []);
-  const [remaining, setRemaining] = useState(Math.max(target - Date.now(), 0));
-
-  useEffect(() => {
-    const timer = window.setInterval(
-      () => setRemaining(Math.max(target - Date.now(), 0)),
-      1000
-    );
-    return () => window.clearInterval(timer);
-  }, [target]);
-
-  const totalSeconds = Math.floor(remaining / 1000);
-  const days = Math.floor(totalSeconds / 86400);
-  const hours = Math.floor((totalSeconds % 86400) / 3600);
-  const minutes = Math.floor((totalSeconds % 3600) / 60);
-  const seconds = totalSeconds % 60;
-  const parts = [
-    [days, "दिवस"],
-    [hours, "तास"],
-    [minutes, "मिनिटे"],
-    [seconds, "सेकंद"],
-  ] as const;
-
-  return (
-    <div className="countdown" aria-label="Launch countdown">
-      <span className="countdown-label">लॉन्चपर्यंत</span>
-      <div className="countdown-grid">
-        {parts.map(([value, label]) => (
-          <div className="countdown-cell" key={label}>
-            <strong>{String(value).padStart(2, "0")}</strong>
-            <span>{label}</span>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
-
 function ProgressPanel({
   status,
   onShare,
@@ -490,16 +448,6 @@ export default function Home() {
               <a className="button button--primary" href="#join">
                 Early Access मिळवा <ArrowRight size={17} />
               </a>
-              <button
-                className="button button--text"
-                type="button"
-                onClick={share}
-              >
-                <span className="play-badge">
-                  <Play size={11} fill="currentColor" />
-                </span>{" "}
-                आपल्या मित्रांना सांगा
-              </button>
             </div>
             <div className="hero-trust">
               <Users size={16} />{" "}
@@ -509,11 +457,6 @@ export default function Home() {
                   ? "नोंदणीचा live आकडा सध्या उपलब्ध नाही"
                   : "लोकांनी सुरुवात केली आहे"}
               </span>
-            </div>
-          </div>
-          <div className="hero-art-wrap">
-            <div className="hero-countdown-card">
-              <Countdown />
             </div>
           </div>
         </section>

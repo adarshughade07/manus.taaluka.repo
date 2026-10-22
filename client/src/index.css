@@ -1161,7 +1161,12 @@ h2 em {
     padding: 92px 18px 62px;
     grid-template-rows: auto 1fr;
     background-image:
-      linear-gradient(rgba(248, 246, 244, 0.6), rgba(248, 246, 244, 0.6)),
+      linear-gradient(
+        180deg,
+        rgba(248, 246, 244, 0.78) 0%,
+        rgba(248, 246, 244, 0.7) 52%,
+        rgba(248, 246, 244, 0.6) 100%
+      ),
       url("/manus-storage/akole-mobile-hero_3f7e3c53.png");
     background-position: center top;
   }
@@ -1170,7 +1175,12 @@ h2 em {
     height: 225px;
   }
   .hero-copy {
-    padding-left: 21px;
+    padding: 25px 18px 26px 21px;
+    border: 1px solid rgba(255, 255, 255, 0.44);
+    border-radius: 24px;
+    background: rgba(248, 246, 244, 0.42);
+    box-shadow: 0 18px 40px rgba(69, 45, 35, 0.09);
+    backdrop-filter: blur(3px);
   }
   .eyebrow {
     font-size: 8px;

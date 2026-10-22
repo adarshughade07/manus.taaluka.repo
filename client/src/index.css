@@ -146,6 +146,12 @@ a {
   gap: 30px;
   padding: 47px 0 83px;
   position: relative;
+  overflow: hidden;
+  border-radius: 0 0 28px 28px;
+  background-image: linear-gradient(90deg, rgba(248, 246, 244, 0.98) 0%, rgba(248, 246, 244, 0.93) 42%, rgba(248, 246, 244, 0.76) 100%), url("/manus-storage/pasted_file_o3CqfW_cc32bebb-483d-49ec-a10e-d00bf0556e1e_b3ff7858.png");
+  background-position: center;
+  background-size: cover;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.45), 0 18px 42px rgba(77, 38, 28, 0.06);
 }
 .hero-section::before {
   content: "";
@@ -1166,6 +1172,8 @@ h2 em {
   }
   .hero-section {
     padding: 28px 0 62px;
+    background-image: linear-gradient(180deg, rgba(248, 246, 244, 0.96) 0%, rgba(248, 246, 244, 0.9) 58%, rgba(248, 246, 244, 0.82) 100%), url("/manus-storage/pasted_file_o3CqfW_cc32bebb-483d-49ec-a10e-d00bf0556e1e_b3ff7858.png");
+    background-position: center;
   }
   .hero-section::before {
     top: 24px;

@@ -573,11 +573,66 @@ export default function Home() {
           </div>
         </section>
 
+        <section className="instagram-section" id="instagram">
+          <div className="section-wrap instagram-layout">
+            <div className="instagram-copy">
+              <span className="section-kicker">04 / FOLLOW THE MOVEMENT</span>
+              <div className="instagram-heading">
+                <div className="instagram-icon" aria-hidden="true">
+                  <Instagram size={25} />
+                </div>
+                <div>
+                  <h2>
+                    अकोल्याची गोष्ट
+                    <br />
+                    <em>दररोज जवळून.</em>
+                  </h2>
+                  <p>
+                    Local stories, business finds आणि Taaluka launch updates —
+                    सगळ्यात आधी Instagram वर.
+                  </p>
+                </div>
+              </div>
+              <a
+                className="instagram-follow"
+                href="https://www.instagram.com/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Instagram वर follow करा <ArrowRight size={17} />
+              </a>
+              <span className="instagram-note">
+                Follow करून launch आधीच्या गोष्टी miss करू नका.
+              </span>
+            </div>
+            <div
+              className="instagram-preview"
+              aria-label="Taaluka Instagram preview"
+            >
+              <article className="instagram-tile instagram-tile--sun">
+                <span>LOCAL STORIES / 01</span>
+                <strong>आपल्या शहराची रोजची गोष्ट.</strong>
+                <Instagram size={22} />
+              </article>
+              <article className="instagram-tile instagram-tile--red">
+                <span>BUSINESS FINDS / 02</span>
+                <strong>आपल्या लोकांची, आपल्या तालुक्याची.</strong>
+                <Instagram size={22} />
+              </article>
+              <article className="instagram-tile instagram-tile--dark">
+                <span>LAUNCH UPDATES / 03</span>
+                <strong>Be the first to know.</strong>
+                <Instagram size={22} />
+              </article>
+            </div>
+          </div>
+        </section>
+
         <section className="closing-section">
           <div className="closing-orbit closing-orbit--one" />
           <div className="closing-orbit closing-orbit--two" />
           <div className="closing-inner" id="closing">
-            <span className="section-kicker">04 / READY WHEN YOU ARE</span>
+            <span className="section-kicker">05 / READY WHEN YOU ARE</span>
             <h2>
               अकोलेकर,
               <br />

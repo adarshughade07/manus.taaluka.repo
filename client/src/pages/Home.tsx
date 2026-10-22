@@ -17,6 +17,8 @@ import { toast } from "sonner";
 import { trpc } from "@/lib/trpc";
 
 const LOGO_URL = "/manus-storage/taaluka__1_-removebg-preview_cadf55b2.png";
+const INSTAGRAM_URL =
+  "https://www.instagram.com/taaluka.akole?utm_source=ig_web_button_share_sheet&srtk=ZDNlZDc0MzIxNw==";
 const WHATSAPP_MESSAGE =
   "अकोल्यासाठी काहीतरी खास येतंय — Taaluka च्या early access मध्ये माझ्यासोबत या!";
 
@@ -595,7 +597,7 @@ export default function Home() {
               </div>
               <a
                 className="instagram-follow"
-                href="https://www.instagram.com/"
+                href={INSTAGRAM_URL}
                 target="_blank"
                 rel="noreferrer"
               >
@@ -605,25 +607,82 @@ export default function Home() {
                 Follow करून launch आधीच्या गोष्टी miss करू नका.
               </span>
             </div>
-            <div
-              className="instagram-preview"
-              aria-label="Taaluka Instagram preview"
-            >
-              <article className="instagram-tile instagram-tile--sun">
-                <span>LOCAL STORIES / 01</span>
-                <strong>आपल्या शहराची रोजची गोष्ट.</strong>
-                <Instagram size={22} />
-              </article>
-              <article className="instagram-tile instagram-tile--red">
-                <span>BUSINESS FINDS / 02</span>
-                <strong>आपल्या लोकांची, आपल्या तालुक्याची.</strong>
-                <Instagram size={22} />
-              </article>
-              <article className="instagram-tile instagram-tile--dark">
-                <span>LAUNCH UPDATES / 03</span>
-                <strong>Be the first to know.</strong>
-                <Instagram size={22} />
-              </article>
+            <div className="instagram-preview" aria-label="Taaluka app preview">
+              <div className="app-phone">
+                <div className="app-phone__speaker" />
+                <div className="app-screen">
+                  <div className="app-topbar">
+                    <img src={LOGO_URL} alt="Taaluka" />
+                    <span>
+                      अकोले <MapPin size={11} />
+                    </span>
+                  </div>
+                  <div className="app-greeting">
+                    <span>नमस्कार, अकोलेकर!</span>
+                    <strong>
+                      तुमच्या तालुक्यात
+                      <br />
+                      आज काय सुरू आहे?
+                    </strong>
+                  </div>
+                  <div className="app-search">⌕ &nbsp; काय शोधताय?</div>
+                  <div className="app-highlight">
+                    <span>आजचा local update</span>
+                    <strong>
+                      आपल्या तालुक्याशी
+                      <br />
+                      जोडलेले राहा.
+                    </strong>
+                    <small>
+                      Explore Akole <ArrowRight size={12} />
+                    </small>
+                  </div>
+                  <div className="app-section-title">
+                    <strong>आजूबाजूला</strong>
+                    <span>सगळं पहा</span>
+                  </div>
+                  <div className="app-mini-cards">
+                    <div>
+                      <MapPin size={13} />
+                      <span>
+                        Local
+                        <br />
+                        updates
+                      </span>
+                    </div>
+                    <div>
+                      <Sparkles size={13} />
+                      <span>
+                        Nearby
+                        <br />
+                        offers
+                      </span>
+                    </div>
+                    <div>
+                      <Zap size={13} />
+                      <span>
+                        What's
+                        <br />
+                        new
+                      </span>
+                    </div>
+                  </div>
+                  <div className="app-bottom-nav">
+                    <span className="is-active">
+                      ⌂<small>Home</small>
+                    </span>
+                    <span>
+                      ◉<small>Explore</small>
+                    </span>
+                    <span>
+                      ♡<small>Saved</small>
+                    </span>
+                    <span>
+                      ◌<small>Profile</small>
+                    </span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </section>
@@ -664,11 +723,7 @@ export default function Home() {
             </div>
             <div>
               <span>Connect</span>
-              <a
-                href="https://www.instagram.com/"
-                target="_blank"
-                rel="noreferrer"
-              >
+              <a href={INSTAGRAM_URL} target="_blank" rel="noreferrer">
                 <Instagram size={15} /> Instagram
               </a>
               <a href={whatsappUrl} target="_blank" rel="noreferrer">

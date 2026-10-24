@@ -494,13 +494,13 @@ export default function Home() {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  Instagram वर follow करा <ArrowRight size={17} />
+                  Tap to Follow on Instagram <ArrowRight size={17} />
                 </a>
                 <span className="instagram-handle">
                   <Instagram size={14} /> taaluka.akole
                 </span>
                 <span className="instagram-note">
-                  Follow करून launch आधीच्या गोष्टी miss करू नका.
+                  Taaluka कम्युनिटीमध्ये Join व्हा, Register करा आणि Follow करा.
                 </span>
               </div>
             </div>

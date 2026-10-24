@@ -1,1 +1,12 @@
-{ "routes": [{ "path": "/", "title": "Taaluka — आपल्या तालुक्याचं, आपलं ॲप" }] }
+{
+  "routes": [
+    { "path": "/", "title": "Taaluka — आपल्या तालुक्याचं, आपलं ॲप" },
+    { "path": "/about", "title": "About Us — Taaluka" },
+    { "path": "/privacy-policy", "title": "Privacy Policy — Taaluka" },
+    {
+      "path": "/terms-and-conditions",
+      "title": "Terms and Conditions — Taaluka"
+    },
+    { "path": "/contact", "title": "Contact Us — Taaluka" }
+  ]
+}

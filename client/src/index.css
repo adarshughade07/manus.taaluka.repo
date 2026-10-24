@@ -1837,3 +1837,227 @@ h2 em {
     height: 38px;
   }
 }
+
+.info-page {
+  min-height: 100vh;
+  color: var(--ink);
+  background: var(--paper);
+}
+.info-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: min(1180px, calc(100% - 48px));
+  margin: 0 auto;
+  padding: 27px 0;
+  border-bottom: 1px solid rgba(37, 37, 37, 0.12);
+}
+.info-brand img {
+  display: block;
+  width: 128px;
+  height: auto;
+}
+.info-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--ink);
+  font-size: 12px;
+  font-weight: 800;
+}
+.info-back:hover {
+  color: var(--red);
+}
+.info-main {
+  width: min(920px, calc(100% - 48px));
+  margin: 0 auto;
+  padding: 92px 0 110px;
+}
+.info-hero {
+  max-width: 740px;
+  padding-bottom: 45px;
+  border-bottom: 1px solid var(--line);
+}
+.info-hero h1 {
+  margin: 18px 0 12px;
+  font-size: clamp(46px, 7vw, 84px);
+  line-height: 0.98;
+  letter-spacing: -0.08em;
+}
+.info-hero > p {
+  margin: 0;
+  color: var(--red);
+  font-size: 18px;
+  font-weight: 800;
+}
+.info-content {
+  max-width: 780px;
+  padding-top: 50px;
+}
+.info-content > p,
+.info-section p,
+.info-section li {
+  color: #554e49;
+  font-size: 15px;
+  line-height: 1.85;
+}
+.info-content > p {
+  margin: 0 0 23px;
+}
+.info-section {
+  margin-top: 44px;
+}
+.info-section h2,
+.info-highlight h2,
+.info-contact-card h2 {
+  margin: 0 0 13px;
+  font-size: 24px;
+  line-height: 1.15;
+  letter-spacing: -0.04em;
+}
+.info-section p {
+  margin: 0 0 15px;
+}
+.info-section ul {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+  padding-left: 21px;
+}
+.info-section li {
+  padding-left: 4px;
+}
+.info-highlight {
+  margin-top: 42px;
+  padding: 29px 31px;
+  border-left: 3px solid var(--red);
+  background: rgba(200, 33, 33, 0.06);
+}
+.info-highlight h2:not(:first-child) {
+  margin-top: 24px;
+}
+.info-highlight p {
+  margin: 0;
+  color: #554e49;
+  font-size: 15px;
+  line-height: 1.75;
+}
+.info-signoff {
+  color: var(--red) !important;
+  font-weight: 800;
+}
+.info-contact-card {
+  margin-top: 44px;
+  padding: 30px 32px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.62);
+}
+.info-contact-card p,
+.info-contact-card a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 10px 0;
+  color: #554e49;
+  font-size: 14px;
+  line-height: 1.6;
+}
+.info-contact-card a:hover {
+  color: var(--red);
+}
+.info-contact-card small {
+  display: block;
+  margin-top: 19px;
+  color: var(--muted);
+  font-size: 12px;
+}
+.info-footer {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 35px;
+  padding: 33px max(24px, calc((100vw - 1180px) / 2));
+  color: rgba(255, 255, 255, 0.68);
+  background: #252525;
+}
+.info-footer > div {
+  display: grid;
+  gap: 10px;
+}
+.info-footer img {
+  width: 108px;
+  filter: grayscale(1) brightness(0) invert(1);
+}
+.info-footer span {
+  font-size: 11px;
+}
+.info-footer nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 19px;
+}
+.info-footer nav a {
+  color: rgba(255, 255, 255, 0.68);
+  font-size: 11px;
+}
+.info-footer nav a:hover {
+  color: var(--white);
+}
+
+@media (max-width: 700px) {
+  .info-header {
+    width: calc(100% - 36px);
+    padding: 21px 0;
+  }
+  .info-brand img {
+    width: 106px;
+  }
+  .info-back {
+    font-size: 10px;
+  }
+  .info-main {
+    width: calc(100% - 36px);
+    padding: 58px 0 74px;
+  }
+  .info-hero {
+    padding-bottom: 31px;
+  }
+  .info-hero h1 {
+    font-size: 49px;
+  }
+  .info-hero > p {
+    font-size: 15px;
+  }
+  .info-content {
+    padding-top: 34px;
+  }
+  .info-content > p,
+  .info-section p,
+  .info-section li {
+    font-size: 14px;
+    line-height: 1.75;
+  }
+  .info-section {
+    margin-top: 34px;
+  }
+  .info-section h2,
+  .info-highlight h2,
+  .info-contact-card h2 {
+    font-size: 21px;
+  }
+  .info-highlight,
+  .info-contact-card {
+    padding: 24px 21px;
+  }
+  .info-footer {
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 30px 22px;
+  }
+  .info-footer nav {
+    justify-content: flex-start;
+    gap: 13px 18px;
+  }
+}

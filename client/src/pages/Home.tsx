@@ -632,6 +632,7 @@ export default function Home() {
           <div className="footer-links">
             <div>
               <span>Explore</span>
+              <a href="/about">About us</a>
               <a href="#why-taaluka">का Taaluka?</a>
               <a href="#join">Early access</a>
             </div>
@@ -646,7 +647,8 @@ export default function Home() {
             </div>
             <div>
               <span>Contact</span>
-              <a href="mailto:hello@taaluka.app">hello@taaluka.app</a>
+              <a href="/contact">Contact us</a>
+              <a href="mailto:taaluka.app@gmail.com">taaluka.app@gmail.com</a>
               <a href="#top">Akole, Maharashtra</a>
             </div>
           </div>
@@ -654,8 +656,8 @@ export default function Home() {
         <div className="footer-bottom">
           <span>© {new Date().getFullYear()} Taaluka. Made for Akole.</span>
           <div>
-            <a href="#top">Privacy Policy</a>
-            <a href="#top">Terms &amp; Conditions</a>
+            <a href="/privacy-policy">Privacy Policy</a>
+            <a href="/terms-and-conditions">Terms &amp; Conditions</a>
           </div>
         </div>
       </footer>

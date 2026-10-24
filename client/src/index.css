@@ -924,15 +924,22 @@ h2 em {
 }
 
 .instagram-section {
-  padding: 112px 24px 118px;
-  background: #f1ece7;
-  overflow: hidden;
+  position: relative;
+  z-index: 4;
+  padding: 0 24px 104px;
+  background: transparent;
+  overflow: visible;
 }
 .instagram-layout {
   display: grid;
   grid-template-columns: 0.88fr 1.12fr;
-  align-items: center;
+  align-items: start;
   gap: 76px;
+}
+.instagram-copy {
+  position: relative;
+  z-index: 2;
+  padding-top: 82px;
 }
 .instagram-copy .section-kicker {
   margin-bottom: 25px;
@@ -995,8 +1002,21 @@ h2 em {
 .instagram-preview {
   display: flex;
   justify-content: center;
-  min-height: 475px;
+  min-height: 0;
   position: relative;
+  z-index: 3;
+  margin-top: -270px;
+}
+.instagram-mockup-image {
+  display: block;
+  width: min(100%, 500px);
+  height: auto;
+  filter: drop-shadow(0 26px 27px rgba(63, 30, 24, 0.17));
+  transform: rotate(1.5deg);
+  transition: transform 0.3s ease;
+}
+.instagram-mockup-image:hover {
+  transform: rotate(0deg) translateY(-6px);
 }
 .app-phone {
   width: min(292px, 100%);
@@ -1739,11 +1759,15 @@ h2 em {
     font-size: 84px;
   }
   .instagram-section {
-    padding: 78px 18px 84px;
+    padding: 0 18px 78px;
   }
   .instagram-layout {
     grid-template-columns: 1fr;
-    gap: 39px;
+    gap: 0;
+  }
+  .instagram-copy {
+    order: 2;
+    padding-top: 24px;
   }
   .instagram-heading h2 {
     font-size: 41px;
@@ -1753,11 +1777,12 @@ h2 em {
     margin-left: 68px;
   }
   .instagram-preview {
-    min-height: 410px;
+    order: 1;
+    margin-top: -220px;
   }
-  .app-phone {
-    width: min(278px, 92%);
-    transform: rotate(2deg);
+  .instagram-mockup-image {
+    width: min(100%, 380px);
+    transform: rotate(1deg);
   }
   .closing-section {
     min-height: 510px;

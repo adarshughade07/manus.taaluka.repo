@@ -464,9 +464,51 @@ export default function Home() {
           </div>
         </section>
 
+        <section className="instagram-section" id="instagram">
+          <div className="section-wrap instagram-layout">
+            <div className="instagram-copy">
+              <span className="section-kicker">01 / FOLLOW THE MOVEMENT</span>
+              <div className="instagram-heading">
+                <div className="instagram-icon" aria-hidden="true">
+                  <Instagram size={25} />
+                </div>
+                <div>
+                  <h2>
+                    अकोल्याची गोष्ट
+                    <br />
+                    <em>दररोज जवळून.</em>
+                  </h2>
+                  <p>
+                    Local stories, business finds आणि Taaluka launch updates —
+                    सगळ्यात आधी Instagram वर.
+                  </p>
+                </div>
+              </div>
+              <a
+                className="instagram-follow"
+                href={INSTAGRAM_URL}
+                target="_blank"
+                rel="noreferrer"
+              >
+                Instagram वर follow करा <ArrowRight size={17} />
+              </a>
+              <span className="instagram-note">
+                Follow करून launch आधीच्या गोष्टी miss करू नका.
+              </span>
+            </div>
+            <div className="instagram-preview" aria-label="Taaluka app preview">
+              <img
+                className="instagram-mockup-image"
+                src="/manus-storage/pasted_file_WhSznl_LocalAppLaunchwithRedRibbon_047ee90e.png"
+                alt="Taaluka mobile app wrapped in a red ribbon"
+              />
+            </div>
+          </div>
+        </section>
+
         <section className="join-strip" id="join">
           <div className="join-strip__intro">
-            <span className="section-kicker">01 / BE FIRST IN LINE</span>
+            <span className="section-kicker">02 / BE FIRST IN LINE</span>
             <h2>
               अकोल्याच्या digital future मध्ये
               <br />
@@ -514,7 +556,7 @@ export default function Home() {
           <div className="section-wrap">
             <div className="section-heading-row">
               <div>
-                <span className="section-kicker">02 / WHY JOIN EARLY?</span>
+                <span className="section-kicker">03 / WHY JOIN EARLY?</span>
                 <h2>
                   अकोलेकरांसाठी.
                   <br />
@@ -552,7 +594,7 @@ export default function Home() {
           <div className="section-wrap proof-layout">
             <div className="proof-copy">
               <span className="section-kicker section-kicker--light">
-                03 / A LOCAL MOVEMENT
+                04 / A LOCAL MOVEMENT
               </span>
               <h2>
                 अकोलेकरांची पसंती,
@@ -570,64 +612,6 @@ export default function Home() {
                 {statsUnavailable
                   ? "live count unavailable"
                   : "live count · real registrations only"}
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="instagram-section" id="instagram">
-          <div className="section-wrap instagram-layout">
-            <div className="instagram-copy">
-              <span className="section-kicker">04 / FOLLOW THE MOVEMENT</span>
-              <div className="instagram-heading">
-                <div className="instagram-icon" aria-hidden="true">
-                  <Instagram size={25} />
-                </div>
-                <div>
-                  <h2>
-                    अकोल्याची गोष्ट
-                    <br />
-                    <em>दररोज जवळून.</em>
-                  </h2>
-                  <p>
-                    Local stories, business finds आणि Taaluka launch updates —
-                    सगळ्यात आधी Instagram वर.
-                  </p>
-                </div>
-              </div>
-              <a
-                className="instagram-follow"
-                href={INSTAGRAM_URL}
-                target="_blank"
-                rel="noreferrer"
-              >
-                Instagram वर follow करा <ArrowRight size={17} />
-              </a>
-              <span className="instagram-note">
-                Follow करून launch आधीच्या गोष्टी miss करू नका.
-              </span>
-            </div>
-            <div className="instagram-preview" aria-label="Taaluka app preview">
-              <div className="app-phone">
-                <div className="app-phone__speaker" />
-                <div className="app-ribbon" aria-hidden="true">
-                  <span>COMING SOON</span>
-                  <span>COMING SOON</span>
-                </div>
-                <div className="app-screen">
-                  <div className="app-statusbar">
-                    <span>9:41</span>
-                    <span>● ◌ ▰</span>
-                  </div>
-                  <div className="app-launch">
-                    <div className="app-icon-mark" aria-hidden="true">
-                      <span>T</span>
-                    </div>
-                    <img src={LOGO_URL} alt="Taaluka" />
-                    <p className="app-coming-soon">COMING SOON</p>
-                    <p>आपल्या तालुक्याचे आपले ॲप</p>
-                  </div>
-                </div>
               </div>
             </div>
           </div>

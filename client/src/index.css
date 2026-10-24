@@ -974,22 +974,18 @@ h2 em {
   font-size: 13px;
   line-height: 1.8;
 }
-.instagram-handle {
+.instagram-cta-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: max-content;
+  margin: 30px 0 0 68px;
+}
+.instagram-launch,
+.instagram-follow {
   display: flex;
   align-items: center;
   gap: 7px;
-  margin: 23px 0 0 68px;
-  color: #5d5753;
-  font-size: 11px;
-  font-weight: 800;
-}
-.instagram-follow {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  margin: 30px 0 0 68px;
-  color: var(--white);
-  background: var(--ink);
   border-radius: 999px;
   padding: 14px 19px;
   font-size: 12px;
@@ -998,15 +994,41 @@ h2 em {
     transform 0.2s ease,
     background 0.2s ease;
 }
+.instagram-launch {
+  color: var(--white);
+  background: var(--red);
+  box-shadow: 0 10px 22px rgba(200, 33, 33, 0.18);
+}
+.instagram-launch:hover {
+  color: var(--white);
+  background: var(--red-deep);
+  transform: translateY(-2px);
+}
+.instagram-handle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  margin: 11px 0 0;
+  color: #5d5753;
+  font-size: 11px;
+  font-weight: 800;
+}
+.instagram-follow {
+  margin: 10px 0 0;
+  color: var(--white);
+  background: var(--ink);
+}
 .instagram-follow:hover {
   background: var(--red);
   transform: translateY(-2px);
 }
 .instagram-note {
   display: block;
-  margin: 13px 0 0 68px;
+  margin: 8px 0 0;
   color: #8d8179;
   font-size: 10px;
+  text-align: center;
 }
 .instagram-preview {
   display: flex;
@@ -1791,8 +1813,7 @@ h2 em {
   .instagram-heading h2 {
     font-size: 41px;
   }
-  .instagram-follow,
-  .instagram-note {
+  .instagram-cta-stack {
     margin-left: 68px;
   }
   .instagram-preview {

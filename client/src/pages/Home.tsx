@@ -484,20 +484,25 @@ export default function Home() {
                   </p>
                 </div>
               </div>
-              <span className="instagram-handle">
-                <Instagram size={14} /> taaluka.akole
-              </span>
-              <a
-                className="instagram-follow"
-                href={INSTAGRAM_URL}
-                target="_blank"
-                rel="noreferrer"
-              >
-                Instagram वर follow करा <ArrowRight size={17} />
-              </a>
-              <span className="instagram-note">
-                Follow करून launch आधीच्या गोष्टी miss करू नका.
-              </span>
+              <div className="instagram-cta-stack">
+                <a className="instagram-launch" href="#join">
+                  Join Taaluka Launch <ArrowRight size={17} />
+                </a>
+                <a
+                  className="instagram-follow"
+                  href={INSTAGRAM_URL}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Instagram वर follow करा <ArrowRight size={17} />
+                </a>
+                <span className="instagram-handle">
+                  <Instagram size={14} /> taaluka.akole
+                </span>
+                <span className="instagram-note">
+                  Follow करून launch आधीच्या गोष्टी miss करू नका.
+                </span>
+              </div>
             </div>
             <div className="instagram-preview" aria-label="Taaluka app preview">
               <img

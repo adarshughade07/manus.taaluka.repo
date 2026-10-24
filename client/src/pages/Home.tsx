@@ -62,20 +62,20 @@ const benefits = [
   {
     number: "01",
     icon: MapPin,
-    title: "आपल्या तालुक्याशी जोडलेले राहा",
-    copy: "अकोले तालुक्यातील घडामोडी, community happenings आणि महत्त्वाची माहिती — अगदी जवळून.",
+    title: "अकोल्यातील प्रत्येक गोष्ट, एकाच ठिकाणी.",
+    copy: "स्थानिक व्यवसाय, सेवा आणि गरजा पूर्ण करणाऱ्या सुविधा — आता शोधा सहज, एकाच ॲपवर.",
   },
   {
     number: "02",
     icon: Sparkles,
-    title: "स्थानिक व्यवसायांना जाणून घ्या",
-    copy: "आपली आवडती shops, services, offers आणि local businesses — एका digital ठिकाणी.",
+    title: "स्थानिकांची साथ, स्थानिकांची प्रगती.",
+    copy: "व्यवसायांना ग्राहकांशी, नोकरी शोधणाऱ्यांना संधींशी आणि नागरिकांना आपल्या परिसराशी जोडणारे एक व्यासपीठ.",
   },
   {
     number: "03",
     icon: Zap,
-    title: "सुरुवातीलाच सहभागी व्हा",
-    copy: "लवकर register करा, मित्रांना invite करा आणि exclusive early-access benefits unlock करा.",
+    title: "अकोले तालुक्याची डिजिटल ओळख.",
+    copy: "स्थानिक घडामोडी, कम्युनिटी अपडेट्स आणि संधींना एकत्र आणून अकोल्याच्या डिजिटल प्रगतीचा भाग व्हा.",
   },
 ];
 
@@ -559,7 +559,9 @@ export default function Home() {
           <div className="section-wrap">
             <div className="section-heading-row">
               <div>
-                <span className="section-kicker">03 / WHY JOIN EARLY?</span>
+                <span className="section-kicker">
+                  03 / VISION OF TAALUKA APP
+                </span>
                 <h2>
                   अकोलेकरांसाठी.
                   <br />

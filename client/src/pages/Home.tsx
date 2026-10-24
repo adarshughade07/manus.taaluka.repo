@@ -425,7 +425,7 @@ export default function Home() {
           href="#join"
           aria-label="Join early access"
         >
-          <ArrowRight size={18} />
+          Early Access
         </a>
       </header>
 
@@ -447,8 +447,11 @@ export default function Home() {
               आपल्या तालुक्यातील घडामोडी, सेवा, ऑफर्स आणि बरंच काही — आता एकाच
               ठिकाणी.
             </p>
-            <div className="hero-actions">
-              <a className="button button--primary" href="#join">
+            <div className="hero-actions hero-actions--hero">
+              <a
+                className="button button--primary hero-early-access"
+                href="#join"
+              >
                 Early Access मिळवा <ArrowRight size={17} />
               </a>
             </div>
@@ -614,27 +617,6 @@ export default function Home() {
                   : "live count · real registrations only"}
               </div>
             </div>
-          </div>
-        </section>
-
-        <section className="closing-section">
-          <div className="closing-orbit closing-orbit--one" />
-          <div className="closing-orbit closing-orbit--two" />
-          <div className="closing-inner" id="closing">
-            <span className="section-kicker">05 / READY WHEN YOU ARE</span>
-            <h2>
-              अकोलेकर,
-              <br />
-              <em>तयार आहात ना?</em>
-            </h2>
-            <p>आपल्या तालुक्याच्या digital प्रवासाचा भाग व्हा.</p>
-            <WaitlistForm
-              onSubmit={register}
-              isPending={registerMutation.isPending}
-              error={friendlyRegistrationError(registerMutation.error?.message)}
-              buttonLabel="माझी जागा निश्चित करा"
-              compact
-            />
           </div>
         </section>
       </main>

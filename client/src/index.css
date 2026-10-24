@@ -1604,6 +1604,16 @@ h2 em {
   }
   .mobile-nav-cta {
     display: inline-flex;
+    width: auto;
+    height: 34px;
+    padding: 0 13px;
+    border-radius: 999px;
+    font-size: 10px;
+    font-weight: 800;
+    white-space: nowrap;
+  }
+  .hero-actions--hero {
+    display: none;
   }
   .hero-section {
     min-height: 100svh;

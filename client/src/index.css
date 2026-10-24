@@ -211,7 +211,7 @@ a {
   color: var(--red-deep);
   font-size: clamp(16px, 2vw, 22px);
   font-weight: 800;
-  letter-spacing: -0.025em;
+  letter-spacing: 0.005em;
 }
 h1,
 h2,
@@ -224,7 +224,7 @@ h1 {
   margin: 25px 0 22px;
   font-size: clamp(44px, 5.3vw, 75px);
   line-height: 1.16;
-  letter-spacing: -0.075em;
+  letter-spacing: -0.02em;
   font-weight: 900;
 }
 .hero-copy h1 {
@@ -544,7 +544,7 @@ h2 em {
   margin: 18px 0 0;
   font-size: clamp(28px, 3.1vw, 45px);
   line-height: 1.28;
-  letter-spacing: -0.06em;
+  letter-spacing: -0.015em;
 }
 .join-strip h2 em {
   color: #ffd6bf;
@@ -661,7 +661,7 @@ h2 em {
 .status-panel h3 {
   margin: 10px 0 0;
   font-size: clamp(23px, 3vw, 33px);
-  letter-spacing: -0.05em;
+  letter-spacing: -0.01em;
 }
 .status-panel h3 em {
   color: #f6b4a0;
@@ -794,7 +794,7 @@ h2 em {
   margin: 16px 0 0;
   font-size: clamp(34px, 4vw, 57px);
   line-height: 1.2;
-  letter-spacing: -0.07em;
+  letter-spacing: -0.015em;
 }
 .section-heading-row p {
   margin-bottom: 5px;
@@ -843,7 +843,7 @@ h2 em {
   margin: auto 0 14px;
   font-size: 22px;
   line-height: 1.4;
-  letter-spacing: -0.05em;
+  letter-spacing: 0;
 }
 .benefit-card p {
   max-width: 280px;
@@ -899,7 +899,7 @@ h2 em {
   margin: 19px 0 0;
   font-size: clamp(32px, 4.5vw, 61px);
   line-height: 1.19;
-  letter-spacing: -0.075em;
+  letter-spacing: -0.015em;
 }
 .proof-copy h2 em {
   color: #ffd6bf;
@@ -912,7 +912,7 @@ h2 em {
   font-size: clamp(72px, 10vw, 144px);
   font-weight: 900;
   line-height: 1;
-  letter-spacing: -0.09em;
+  letter-spacing: -0.03em;
 }
 .proof-stat > span {
   display: block;
@@ -971,7 +971,7 @@ h2 em {
   margin: -3px 0 13px;
   font-size: clamp(35px, 4.2vw, 58px);
   line-height: 1.16;
-  letter-spacing: -0.075em;
+  letter-spacing: -0.015em;
 }
 .instagram-heading p {
   max-width: 360px;
@@ -1909,7 +1909,7 @@ h2 em {
   margin: 18px 0 12px;
   font-size: clamp(46px, 7vw, 84px);
   line-height: 0.98;
-  letter-spacing: -0.08em;
+  letter-spacing: -0.02em;
 }
 .info-hero > p {
   margin: 0;
@@ -1940,7 +1940,7 @@ h2 em {
   margin: 0 0 13px;
   font-size: 24px;
   line-height: 1.15;
-  letter-spacing: -0.04em;
+  letter-spacing: -0.01em;
 }
 .info-section p {
   margin: 0 0 15px;

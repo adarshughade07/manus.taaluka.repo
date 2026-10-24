@@ -469,18 +469,15 @@ export default function Home() {
             <div className="instagram-copy">
               <span className="section-kicker">01 / FOLLOW THE MOVEMENT</span>
               <div className="instagram-heading">
-                <div className="instagram-icon" aria-hidden="true">
-                  <Instagram size={25} />
-                </div>
                 <div>
                   <h2>
-                    अकोल्याची गोष्ट
+                    आपल्या तालुक्याचे
                     <br />
-                    <em>दररोज जवळून.</em>
+                    <em>आपले ॲप</em>
                   </h2>
                   <p>
-                    Local stories, business finds आणि Taaluka launch updates —
-                    सगळ्यात आधी Instagram वर.
+                    अकोल्यातील स्थानिक सेवा, व्यवसाय, नोकऱ्या, व्यवहार, ऑफर्स,
+                    कम्युनिटी आणि घडामोडी ...सर्व काही एकाच ॲपवर, आपल्या हातावर!
                   </p>
                 </div>
               </div>

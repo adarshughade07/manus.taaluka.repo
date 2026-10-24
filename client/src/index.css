@@ -28,6 +28,7 @@ body {
   background: var(--paper);
   color: var(--ink);
   font-family:
+    "Mukta",
     "Google Sans",
     "Noto Sans Devanagari",
     system-ui,

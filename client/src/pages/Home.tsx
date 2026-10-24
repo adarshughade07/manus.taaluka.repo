@@ -610,76 +610,22 @@ export default function Home() {
             <div className="instagram-preview" aria-label="Taaluka app preview">
               <div className="app-phone">
                 <div className="app-phone__speaker" />
+                <div className="app-ribbon" aria-hidden="true">
+                  <span>COMING SOON</span>
+                  <span>COMING SOON</span>
+                </div>
                 <div className="app-screen">
-                  <div className="app-topbar">
+                  <div className="app-statusbar">
+                    <span>9:41</span>
+                    <span>● ◌ ▰</span>
+                  </div>
+                  <div className="app-launch">
+                    <div className="app-icon-mark" aria-hidden="true">
+                      <span>T</span>
+                    </div>
                     <img src={LOGO_URL} alt="Taaluka" />
-                    <span>
-                      अकोले <MapPin size={11} />
-                    </span>
-                  </div>
-                  <div className="app-greeting">
-                    <span>नमस्कार, अकोलेकर!</span>
-                    <strong>
-                      तुमच्या तालुक्यात
-                      <br />
-                      आज काय सुरू आहे?
-                    </strong>
-                  </div>
-                  <div className="app-search">⌕ &nbsp; काय शोधताय?</div>
-                  <div className="app-highlight">
-                    <span>आजचा local update</span>
-                    <strong>
-                      आपल्या तालुक्याशी
-                      <br />
-                      जोडलेले राहा.
-                    </strong>
-                    <small>
-                      Explore Akole <ArrowRight size={12} />
-                    </small>
-                  </div>
-                  <div className="app-section-title">
-                    <strong>आजूबाजूला</strong>
-                    <span>सगळं पहा</span>
-                  </div>
-                  <div className="app-mini-cards">
-                    <div>
-                      <MapPin size={13} />
-                      <span>
-                        Local
-                        <br />
-                        updates
-                      </span>
-                    </div>
-                    <div>
-                      <Sparkles size={13} />
-                      <span>
-                        Nearby
-                        <br />
-                        offers
-                      </span>
-                    </div>
-                    <div>
-                      <Zap size={13} />
-                      <span>
-                        What's
-                        <br />
-                        new
-                      </span>
-                    </div>
-                  </div>
-                  <div className="app-bottom-nav">
-                    <span className="is-active">
-                      ⌂<small>Home</small>
-                    </span>
-                    <span>
-                      ◉<small>Explore</small>
-                    </span>
-                    <span>
-                      ♡<small>Saved</small>
-                    </span>
-                    <span>
-                      ◌<small>Profile</small>
-                    </span>
+                    <p className="app-coming-soon">COMING SOON</p>
+                    <p>आपल्या तालुक्याचे आपले ॲप</p>
                   </div>
                 </div>
               </div>

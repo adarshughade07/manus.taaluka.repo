@@ -1197,6 +1197,152 @@ h2 em {
   color: var(--red);
 }
 
+.app-screen {
+  padding: 0;
+  color: var(--white);
+  background:
+    radial-gradient(
+      circle at 50% 32%,
+      rgba(200, 33, 33, 0.18),
+      transparent 38%
+    ),
+    linear-gradient(160deg, #19191c 0%, #070708 72%);
+}
+.app-screen::before {
+  top: auto;
+  right: -70px;
+  bottom: -70px;
+  width: 250px;
+  height: 250px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: transparent;
+  box-shadow: 0 0 0 28px rgba(255, 255, 255, 0.025);
+}
+.app-statusbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: absolute;
+  top: 16px;
+  right: 19px;
+  left: 19px;
+  z-index: 2;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 9px;
+  font-weight: 700;
+}
+.app-launch {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+  min-height: 445px;
+  padding: 58px 18px 20px;
+  text-align: center;
+}
+.app-icon-mark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 92px;
+  height: 92px;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 25px;
+  color: #df2158;
+  background: #fff;
+  box-shadow:
+    0 14px 30px rgba(0, 0, 0, 0.35),
+    inset 0 -2px 0 rgba(0, 0, 0, 0.07);
+}
+.app-icon-mark span {
+  margin-top: -4px;
+  font-family: Georgia, serif;
+  font-size: 67px;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.18em;
+  transform: scaleX(0.78);
+}
+.app-launch img {
+  width: 145px;
+  height: auto;
+  margin-top: 25px;
+  padding: 9px 13px;
+  border-radius: 10px;
+  background: #fff;
+}
+.app-launch .app-coming-soon {
+  margin: 28px 0 0;
+  color: #ff8a82;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 0.25em;
+}
+.app-launch > p:last-child {
+  margin: 10px 0 0;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 11px;
+}
+.app-ribbon {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  position: absolute;
+  top: 218px;
+  left: -39px;
+  z-index: 4;
+  width: calc(100% + 78px);
+  padding: 11px 8px 12px;
+  overflow: hidden;
+  border-top: 1px solid rgba(255, 255, 255, 0.42);
+  border-bottom: 1px solid rgba(85, 0, 0, 0.5);
+  color: var(--white);
+  background: linear-gradient(
+    180deg,
+    #ff5b55 0%,
+    #d61e28 36%,
+    #a10d17 63%,
+    #e33235 100%
+  );
+  box-shadow:
+    0 13px 18px rgba(0, 0, 0, 0.34),
+    inset 0 2px 0 rgba(255, 255, 255, 0.18),
+    inset 0 -3px 0 rgba(75, 0, 0, 0.24);
+  transform: rotate(-10deg);
+}
+.app-ribbon::before,
+.app-ribbon::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  width: 31px;
+  height: 25px;
+  background: #790b13;
+  clip-path: polygon(0 0, 100% 0, 100% 100%);
+}
+.app-ribbon::before {
+  left: 0;
+  transform: skewY(24deg);
+  transform-origin: top left;
+}
+.app-ribbon::after {
+  right: 0;
+  transform: scaleX(-1) skewY(24deg);
+  transform-origin: top right;
+}
+.app-ribbon span {
+  flex: 1;
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 0.16em;
+  text-shadow: 0 1px 1px rgba(76, 0, 0, 0.45);
+}
+
 .closing-section {
   min-height: 525px;
   display: flex;

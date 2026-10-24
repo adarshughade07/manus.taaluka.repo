@@ -226,6 +226,10 @@ h1 {
   letter-spacing: -0.075em;
   font-weight: 900;
 }
+.hero-copy h1 {
+  -webkit-text-stroke: 0.35px currentColor;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.22);
+}
 h1 span,
 h2 em {
   color: var(--red);

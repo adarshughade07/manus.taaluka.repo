@@ -481,6 +481,9 @@ export default function Home() {
                   </p>
                 </div>
               </div>
+              <span className="instagram-handle">
+                <Instagram size={14} /> taaluka.akole
+              </span>
               <a
                 className="instagram-follow"
                 href={INSTAGRAM_URL}

@@ -956,6 +956,9 @@ h2 em {
 .instagram-copy .section-kicker {
   margin-bottom: 25px;
 }
+.instagram-mobile-logo {
+  display: none;
+}
 .instagram-heading {
   display: flex;
   align-items: flex-start;
@@ -1821,12 +1824,30 @@ h2 em {
   .instagram-copy {
     order: 2;
     padding-top: 24px;
+    text-align: left;
+  }
+  .instagram-mobile-logo {
+    display: block;
+    width: 112px;
+    height: auto;
+    margin: 0 0 22px;
+  }
+  .instagram-heading {
+    justify-content: flex-start;
+    text-align: left;
   }
   .instagram-heading h2 {
     font-size: 41px;
   }
   .instagram-cta-stack {
-    margin-left: 68px;
+    align-items: flex-start;
+    margin-left: 0;
+  }
+  .instagram-handle {
+    justify-content: flex-start;
+  }
+  .instagram-note {
+    text-align: left;
   }
   .instagram-preview {
     order: 1;

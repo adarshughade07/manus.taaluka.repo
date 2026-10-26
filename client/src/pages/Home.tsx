@@ -499,7 +499,7 @@ export default function Home() {
               <span className="eyebrow-line" /> AKOLE • MAHARASHTRA
             </div>
             <h1>
-              आपल्या अकोल्याचा
+              <span>“ तालुका ”</span> आपल्या अकोल्याचा
               <br />
               <span>हक्काचा डिजिटल</span>
               <br />

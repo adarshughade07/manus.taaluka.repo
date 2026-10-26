@@ -502,6 +502,7 @@ export default function Home() {
             <div className="eyebrow">
               <span className="eyebrow-line" /> AKOLE • MAHARASHTRA
             </div>
+            <div className="hero-brand-word">&quot; तालुका &quot;</div>
             <h1>
               आपल्या अकोल्याचा
               <br />

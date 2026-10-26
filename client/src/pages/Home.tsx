@@ -495,9 +495,6 @@ export default function Home() {
       <main id="top">
         <section className="hero-section">
           <div className="hero-copy">
-            <div className="eyebrow">
-              <span className="eyebrow-line" /> AKOLE • MAHARASHTRA
-            </div>
             <h1>
               <span>“ तालुका ”</span> आपल्या अकोल्याचा
               <br />

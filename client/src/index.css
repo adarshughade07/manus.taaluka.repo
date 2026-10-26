@@ -1053,7 +1053,7 @@ h2 em {
   min-height: 0;
   position: relative;
   z-index: 3;
-  margin-top: -270px;
+  margin-top: -743px;
   overflow: visible;
 }
 .badge-animation-frame {
@@ -1868,7 +1868,7 @@ h2 em {
   }
   .instagram-preview {
     order: 1;
-    margin-top: -220px;
+    margin-top: -540px;
     overflow: visible;
   }
   .badge-animation-frame {

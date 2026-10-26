@@ -530,7 +530,9 @@ export default function Home() {
         <section className="instagram-section" id="instagram">
           <div className="section-wrap instagram-layout">
             <div className="instagram-copy">
-              <span className="section-kicker">01 / FOLLOW THE MOVEMENT</span>
+              <span className="section-kicker">
+                01 / Made WITH LOVE FOR AKOLE
+              </span>
               <img
                 className="instagram-mobile-logo"
                 src={LOGO_URL}

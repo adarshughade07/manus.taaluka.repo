@@ -21,7 +21,18 @@ After the first deployment:
 2. Go to **Forms**.
 3. Select `taaluka-waitlist` to view submissions or configure notifications.
 
-Static Netlify mode intentionally does not show fabricated queue positions, referral progress, or live registration counts because those require a database-backed service. The page shows an honest confirmation after Netlify accepts the form submission.
+The page now reads the real `submission_count` for `taaluka-waitlist` through the server-side Netlify Function at `/api/waitlist-count`. The count refreshes on page load, every 30 seconds, and after a successful form submission. The private API token is never sent to the browser.
+
+### Enable the live count
+
+The Function needs a Netlify personal access token with permission to read the site forms:
+
+1. In Netlify, open **User settings → Applications → Personal access tokens** and create a token.
+2. In the site, open **Site configuration → Environment variables**.
+3. Add `NETLIFY_AUTH_TOKEN` with the token value and make sure its scope includes **Functions**.
+4. Trigger a new deploy after saving the variable. `SITE_ID` is supplied automatically by Netlify to Functions.
+
+If the token is missing or the Function has not been redeployed yet, the page safely shows `—` instead of an invented number.
 
 ## Local static build
 

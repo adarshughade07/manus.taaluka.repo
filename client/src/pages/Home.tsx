@@ -1,4 +1,4 @@
-import { useMemo, useState, type FormEvent } from "react";
+import { useEffect, useMemo, useState, type FormEvent } from "react";
 import {
   ArrowRight,
   Check,
@@ -52,6 +52,30 @@ async function submitToNetlify(name: string, mobile: string) {
   } catch {
     // The managed API remains the source of truth if Netlify capture is unavailable.
     return false;
+  }
+}
+
+async function fetchNetlifyCount() {
+  if (!IS_NETLIFY_STATIC || typeof window === "undefined") return null;
+
+  try {
+    const response = await fetch("/api/waitlist-count", {
+      headers: { Accept: "application/json" },
+      cache: "no-store",
+    });
+    if (!response.ok) return null;
+
+    const data = (await response.json()) as {
+      available?: boolean;
+      totalCount?: number;
+    };
+    return data.available &&
+      typeof data.totalCount === "number" &&
+      Number.isSafeInteger(data.totalCount)
+      ? data.totalCount
+      : null;
+  } catch {
+    return null;
   }
 }
 
@@ -320,6 +344,7 @@ function ProgressPanel({
 
 export default function Home() {
   const [status, setStatus] = useState<WaitlistStatus | null>(null);
+  const [netlifyCount, setNetlifyCount] = useState<number | null>(null);
   const [shareNotice, setShareNotice] = useState("");
   const [staticSubmitting, setStaticSubmitting] = useState(false);
   const [staticSubmitted, setStaticSubmitted] = useState(false);
@@ -332,6 +357,24 @@ export default function Home() {
     enabled: !IS_NETLIFY_STATIC,
     refetchInterval: 30_000,
   });
+
+  useEffect(() => {
+    if (!IS_NETLIFY_STATIC) return;
+
+    let cancelled = false;
+    const refreshCount = async () => {
+      const count = await fetchNetlifyCount();
+      if (!cancelled && count !== null) setNetlifyCount(count);
+    };
+
+    refreshCount();
+    const interval = window.setInterval(refreshCount, 30_000);
+    return () => {
+      cancelled = true;
+      window.clearInterval(interval);
+    };
+  }, []);
+
   const registerMutation = trpc.waitlist.register.useMutation({
     onSuccess: data => {
       setStatus(data.status);
@@ -369,6 +412,8 @@ export default function Home() {
         return;
       }
       setStaticSubmitted(true);
+      const count = await fetchNetlifyCount();
+      if (count !== null) setNetlifyCount(count);
       toast.success("अभिनंदन! तुमची नोंदणी Taaluka कडे पाठवली आहे.");
       document
         .getElementById("join")
@@ -389,10 +434,11 @@ export default function Home() {
     );
   };
 
-  const statsUnavailable =
-    IS_NETLIFY_STATIC || stats.isError || stats.data?.available === false;
-  const registeredCount = statsUnavailable
-    ? "—"
+  const statsUnavailable = IS_NETLIFY_STATIC
+    ? netlifyCount === null
+    : stats.isError || stats.data?.available === false;
+  const registeredCount = IS_NETLIFY_STATIC
+    ? (netlifyCount?.toLocaleString("en-IN") ?? "—")
     : (stats.data?.totalCount ?? 0).toLocaleString("en-IN");
 
   const share = async () => {

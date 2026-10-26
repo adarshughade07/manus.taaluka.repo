@@ -6,6 +6,9 @@
   NODE_VERSION = "22"
   VITE_NETLIFY_STATIC = "true"
 
+[functions]
+  directory = "netlify/functions"
+
 [[redirects]]
   from = "/*"
   to = "/index.html"

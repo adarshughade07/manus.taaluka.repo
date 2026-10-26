@@ -484,15 +484,11 @@ export default function Home() {
         <nav className="desktop-nav" aria-label="Main navigation">
           <a href="#why-taaluka">का Taaluka?</a>
           <a className="nav-cta" href="#join">
-            Join Taaluka Lunch <ArrowRight size={15} />
+            Join Taaluka <ArrowRight size={15} />
           </a>
         </nav>
-        <a
-          className="mobile-nav-cta"
-          href="#join"
-          aria-label="Join Taaluka Lunch"
-        >
-          Join Taaluka Lunch
+        <a className="mobile-nav-cta" href="#join" aria-label="Join Taaluka">
+          Join Taaluka
         </a>
       </header>
 
@@ -502,7 +498,6 @@ export default function Home() {
             <div className="eyebrow">
               <span className="eyebrow-line" /> AKOLE • MAHARASHTRA
             </div>
-            <div className="hero-brand-word">&quot; तालुका &quot;</div>
             <h1>
               आपल्या अकोल्याचा
               <br />
@@ -520,7 +515,7 @@ export default function Home() {
                 className="button button--primary hero-early-access"
                 href="#join"
               >
-                Join Taaluka Lunch <ArrowRight size={17} />
+                Join Taaluka <ArrowRight size={17} />
               </a>
             </div>
             <div className="hero-trust">
@@ -609,7 +604,7 @@ export default function Home() {
                   ? staticError
                   : friendlyRegistrationError(registerMutation.error?.message)
               }
-              buttonLabel="Join Taaluka Lunch"
+              buttonLabel="Join Taaluka"
             />
             {staticSubmitted && (
               <p className="netlify-success" role="status">

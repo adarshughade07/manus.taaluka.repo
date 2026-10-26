@@ -484,15 +484,15 @@ export default function Home() {
         <nav className="desktop-nav" aria-label="Main navigation">
           <a href="#why-taaluka">का Taaluka?</a>
           <a className="nav-cta" href="#join">
-            माझी जागा निश्चित करा <ArrowRight size={15} />
+            Join Taaluka Lunch <ArrowRight size={15} />
           </a>
         </nav>
         <a
           className="mobile-nav-cta"
           href="#join"
-          aria-label="Join early access"
+          aria-label="Join Taaluka Lunch"
         >
-          Early Access
+          Join Taaluka Lunch
         </a>
       </header>
 
@@ -519,7 +519,7 @@ export default function Home() {
                 className="button button--primary hero-early-access"
                 href="#join"
               >
-                Early Access मिळवा <ArrowRight size={17} />
+                Join Taaluka Lunch <ArrowRight size={17} />
               </a>
             </div>
             <div className="hero-trust">
@@ -603,7 +603,7 @@ export default function Home() {
                   ? staticError
                   : friendlyRegistrationError(registerMutation.error?.message)
               }
-              buttonLabel="Early Access मिळवा"
+              buttonLabel="Join Taaluka Lunch"
             />
             {staticSubmitted && (
               <p className="netlify-success" role="status">

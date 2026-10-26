@@ -1,0 +1,12 @@
+[build]
+  command = "pnpm install --frozen-lockfile && pnpm build:netlify"
+  publish = "dist/public"
+
+[build.environment]
+  NODE_VERSION = "22"
+  VITE_NETLIFY_STATIC = "true"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

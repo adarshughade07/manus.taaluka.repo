@@ -2,7 +2,7 @@ import { ArrowLeft, Mail, MapPin } from "lucide-react";
 import type { ReactNode } from "react";
 import { Link } from "wouter";
 
-const LOGO_URL = "/manus-storage/taaluka__1_-removebg-preview_cadf55b2.png";
+const LOGO_URL = "/assets/taaluka-logo.png";
 
 type PageKind = "about" | "privacy" | "terms" | "contact";
 

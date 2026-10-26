@@ -16,11 +16,12 @@ import {
 import { toast } from "sonner";
 import { trpc } from "@/lib/trpc";
 
-const LOGO_URL = "/manus-storage/taaluka__1_-removebg-preview_cadf55b2.png";
+const LOGO_URL = "/assets/taaluka-logo.png";
 const INSTAGRAM_URL =
   "https://www.instagram.com/taaluka.akole?utm_source=ig_web_button_share_sheet&srtk=ZDNlZDc0MzIxNw==";
 const WHATSAPP_MESSAGE =
   "अकोल्यासाठी काहीतरी खास येतंय — Taaluka च्या early access मध्ये माझ्यासोबत या!";
+const IS_NETLIFY_STATIC = import.meta.env.VITE_NETLIFY_STATIC === "true";
 
 function friendlyRegistrationError(message?: string) {
   if (!message) return undefined;
@@ -34,11 +35,7 @@ function friendlyRegistrationError(message?: string) {
 }
 
 async function submitToNetlify(name: string, mobile: string) {
-  if (typeof window === "undefined") return true;
-  const host = window.location.hostname;
-  const isNetlifyHost =
-    host.endsWith(".netlify.app") || host.endsWith(".netlify.com");
-  if (!isNetlifyHost) return true;
+  if (!IS_NETLIFY_STATIC || typeof window === "undefined") return true;
 
   const body = new URLSearchParams({
     "form-name": "taaluka-waitlist",
@@ -324,11 +321,15 @@ function ProgressPanel({
 export default function Home() {
   const [status, setStatus] = useState<WaitlistStatus | null>(null);
   const [shareNotice, setShareNotice] = useState("");
+  const [staticSubmitting, setStaticSubmitting] = useState(false);
+  const [staticSubmitted, setStaticSubmitted] = useState(false);
+  const [staticError, setStaticError] = useState("");
   const referralCode = useMemo(() => {
     if (typeof window === "undefined") return undefined;
     return new URLSearchParams(window.location.search).get("ref") || undefined;
   }, []);
   const stats = trpc.waitlist.stats.useQuery(undefined, {
+    enabled: !IS_NETLIFY_STATIC,
     refetchInterval: 30_000,
   });
   const registerMutation = trpc.waitlist.register.useMutation({
@@ -354,8 +355,27 @@ export default function Home() {
     },
   });
 
-  const register = (name: string, mobile: string) => {
+  const register = async (name: string, mobile: string) => {
     setShareNotice("");
+    if (IS_NETLIFY_STATIC) {
+      setStaticSubmitting(true);
+      setStaticError("");
+      const netlifySaved = await submitToNetlify(name, mobile);
+      setStaticSubmitting(false);
+      if (!netlifySaved) {
+        setStaticError(
+          "नोंदणी सध्या पूर्ण झाली नाही. कृपया पुन्हा प्रयत्न करा."
+        );
+        return;
+      }
+      setStaticSubmitted(true);
+      toast.success("अभिनंदन! तुमची नोंदणी Taaluka कडे पाठवली आहे.");
+      document
+        .getElementById("join")
+        ?.scrollIntoView({ behavior: "smooth", block: "center" });
+      return;
+    }
+
     registerMutation.mutate(
       { name, mobile, referralCode },
       {
@@ -369,7 +389,8 @@ export default function Home() {
     );
   };
 
-  const statsUnavailable = stats.isError || stats.data?.available === false;
+  const statsUnavailable =
+    IS_NETLIFY_STATIC || stats.isError || stats.data?.available === false;
   const registeredCount = statsUnavailable
     ? "—"
     : (stats.data?.totalCount ?? 0).toLocaleString("en-IN");
@@ -507,7 +528,7 @@ export default function Home() {
             <div className="instagram-preview" aria-label="Taaluka app preview">
               <img
                 className="instagram-mockup-image"
-                src="/manus-storage/pasted_file_WhSznl_LocalAppLaunchwithRedRibbon_047ee90e.png"
+                src="/assets/taaluka-app-ribbon.png"
                 alt="Taaluka mobile app wrapped in a red ribbon"
               />
             </div>
@@ -526,10 +547,23 @@ export default function Home() {
           <div className="join-strip__form">
             <WaitlistForm
               onSubmit={register}
-              isPending={registerMutation.isPending}
-              error={friendlyRegistrationError(registerMutation.error?.message)}
+              isPending={
+                IS_NETLIFY_STATIC
+                  ? staticSubmitting
+                  : registerMutation.isPending
+              }
+              error={
+                IS_NETLIFY_STATIC
+                  ? staticError
+                  : friendlyRegistrationError(registerMutation.error?.message)
+              }
               buttonLabel="Early Access मिळवा"
             />
+            {staticSubmitted && (
+              <p className="netlify-success" role="status">
+                तुमची नोंदणी Netlify Forms मध्ये सुरक्षितरीत्या पाठवली आहे.
+              </p>
+            )}
             {referralCode && (
               <p className="referral-note">
                 <Link2 size={14} /> तुम्हाला एक referral invite मिळालं आहे.

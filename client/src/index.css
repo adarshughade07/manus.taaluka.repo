@@ -165,7 +165,7 @@ a {
       rgba(248, 246, 244, 0.78) 42%,
       rgba(248, 246, 244, 0.55) 100%
     ),
-    url("/manus-storage/pasted_file_o3CqfW_cc32bebb-483d-49ec-a10e-d00bf0556e1e_b3ff7858.png");
+    url("/assets/akole-hero-desktop.png");
   background-position: center 62%;
   background-size: cover;
   box-shadow:
@@ -618,6 +618,12 @@ h2 em {
   margin: 5px 10px 0;
   color: #ffd4c8;
   font-size: 11px;
+}
+.netlify-success {
+  margin: 12px 0 0 13px;
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 11px;
+  font-weight: 700;
 }
 .field-error {
   margin: 5px 10px 0;
@@ -1654,7 +1660,7 @@ h2 em {
         rgba(248, 246, 244, 0.76) 52%,
         rgba(248, 246, 244, 0.68) 100%
       ),
-      url("/manus-storage/akole-mobile-hero_3f7e3c53.png");
+      url("/assets/akole-hero-mobile.png");
     background-position: center top;
   }
   .hero-section::before {

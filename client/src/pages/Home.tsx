@@ -837,7 +837,14 @@ export default function Home() {
       {successMessage && (
         <RegistrationSuccessModal
           message={successMessage}
-          onClose={() => setSuccessMessage("")}
+          onClose={() => {
+            setSuccessMessage("");
+            window.setTimeout(() => {
+              document
+                .getElementById("why-taaluka")
+                ?.scrollIntoView({ behavior: "smooth", block: "start" });
+            }, 80);
+          }}
         />
       )}
     </div>

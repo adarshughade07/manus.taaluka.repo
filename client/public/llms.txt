@@ -1,0 +1,29 @@
+# Taaluka
+
+> Taaluka is a local discovery platform connecting residents with local businesses, services, jobs, offers, local updates, events, and community — bringing everything together in one digital platform for every taluka.
+>
+> Taaluka is currently launched and operational in Akole Taluka, Maharashtra, India, with a vision to expand across all talukas in India.
+
+## About
+
+Taaluka helps residents discover local businesses, access services, explore job opportunities, find offers, stay informed about local updates and events, and connect with their communities.
+
+## Founder
+
+- Founder: Adarsh Sujata (Ughade)
+
+## Contact
+
+- Email: [taaluka.app@gmail.com](mailto:taaluka.app@gmail.com)
+- Website: [https://taaluka.com](https://taaluka.com)
+
+## Location
+
+- Current operating location: Akole Taluka
+- State: Maharashtra
+- Country: India
+
+## Languages
+
+- Marathi
+- English

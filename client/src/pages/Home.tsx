@@ -1,4 +1,10 @@
-import { useEffect, useMemo, useState, type FormEvent } from "react";
+import {
+  useEffect,
+  useMemo,
+  useState,
+  type CSSProperties,
+  type FormEvent,
+} from "react";
 import {
   ArrowRight,
   Check,
@@ -115,6 +121,7 @@ type FormProps = {
   error?: string;
   buttonLabel: string;
   compact?: boolean;
+  successToken?: number;
 };
 
 type FormErrors = {
@@ -128,11 +135,18 @@ function WaitlistForm({
   error,
   buttonLabel,
   compact = false,
+  successToken = 0,
 }: FormProps) {
   const [name, setName] = useState("");
   const [mobile, setMobile] = useState("");
   const [fieldErrors, setFieldErrors] = useState<FormErrors>({});
   const formId = compact ? "closing" : "hero";
+  useEffect(() => {
+    if (successToken === 0) return;
+    setName("");
+    setMobile("");
+    setFieldErrors({});
+  }, [successToken]);
 
   const validate = () => {
     const nextErrors: FormErrors = {};
@@ -342,6 +356,56 @@ function ProgressPanel({
   );
 }
 
+function RegistrationSuccessModal({
+  message,
+  onClose,
+}: {
+  message: string;
+  onClose: () => void;
+}) {
+  const confetti = Array.from({ length: 22 }, (_, index) => index);
+
+  return (
+    <div className="success-modal-backdrop">
+      <div
+        className="success-modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="success-modal-title"
+      >
+        <div className="success-confetti" aria-hidden="true">
+          {confetti.map(index => (
+            <span
+              className="success-confetti-piece"
+              key={index}
+              style={
+                {
+                  "--confetti-x": `${((index * 37) % 100) - 50}%`,
+                  "--confetti-delay": `${(index % 7) * 45}ms`,
+                  "--confetti-rotate": `${(index % 2 ? 1 : -1) * (18 + index * 7)}deg`,
+                } as CSSProperties
+              }
+            />
+          ))}
+        </div>
+        <div className="success-modal-icon">
+          <Check size={27} strokeWidth={2.8} />
+        </div>
+        <span className="success-modal-kicker">TAALUKA WAITLIST</span>
+        <h2 id="success-modal-title">तुमची जागा निश्चित झाली!</h2>
+        <p>{message}</p>
+        <button
+          className="button button--primary"
+          type="button"
+          onClick={onClose}
+        >
+          छान! पुढे जाऊया <ArrowRight size={17} />
+        </button>
+      </div>
+    </div>
+  );
+}
+
 export default function Home() {
   const [status, setStatus] = useState<WaitlistStatus | null>(null);
   const [netlifyCount, setNetlifyCount] = useState<number | null>(null);
@@ -349,6 +413,8 @@ export default function Home() {
   const [staticSubmitting, setStaticSubmitting] = useState(false);
   const [staticSubmitted, setStaticSubmitted] = useState(false);
   const [staticError, setStaticError] = useState("");
+  const [successToken, setSuccessToken] = useState(0);
+  const [successMessage, setSuccessMessage] = useState("");
   const referralCode = useMemo(() => {
     if (typeof window === "undefined") return undefined;
     return new URLSearchParams(window.location.search).get("ref") || undefined;
@@ -390,11 +456,12 @@ export default function Home() {
       document
         .getElementById("share")
         ?.scrollIntoView({ behavior: "smooth", block: "center" });
-      toast.success(
+      setSuccessMessage(
         data.isNew
           ? "अभिनंदन! तुम्ही Taaluka मध्ये जोडले गेले आहात."
           : "तुमची जागा आधीच सुरक्षित आहे."
       );
+      setSuccessToken(token => token + 1);
     },
   });
 
@@ -412,9 +479,10 @@ export default function Home() {
         return;
       }
       setStaticSubmitted(true);
+      setSuccessMessage("अभिनंदन! तुमची नोंदणी Taaluka कडे पाठवली आहे.");
+      setSuccessToken(token => token + 1);
       const count = await fetchNetlifyCount();
       if (count !== null) setNetlifyCount(count);
-      toast.success("अभिनंदन! तुमची नोंदणी Taaluka कडे पाठवली आहे.");
       document
         .getElementById("join")
         ?.scrollIntoView({ behavior: "smooth", block: "center" });
@@ -611,6 +679,7 @@ export default function Home() {
                   : friendlyRegistrationError(registerMutation.error?.message)
               }
               buttonLabel="Join Taaluka"
+              successToken={successToken}
             />
             {staticSubmitted && (
               <p className="netlify-success" role="status">
@@ -765,6 +834,12 @@ export default function Home() {
       >
         <ChevronDown size={18} />
       </button>
+      {successMessage && (
+        <RegistrationSuccessModal
+          message={successMessage}
+          onClose={() => setSuccessMessage("")}
+        />
+      )}
     </div>
   );
 }

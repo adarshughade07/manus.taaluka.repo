@@ -592,9 +592,9 @@ export default function Home() {
           <div className="join-strip__intro">
             <span className="section-kicker">02 / BE FIRST IN LINE</span>
             <h2>
-              अकोल्याच्या digital future मध्ये
+              Be the first user
               <br />
-              <em>तुमची जागा</em> आजच ठेवा.
+              <em>अकोले तालुक्याच्या डिजिटल पर्वात आजच सामील व्हा!</em>
             </h2>
           </div>
           <div className="join-strip__form">

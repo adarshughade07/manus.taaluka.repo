@@ -642,15 +642,9 @@ export default function Home() {
             <div className="instagram-preview" aria-label="Taaluka app preview">
               <iframe
                 className="badge-animation-frame"
-                src="/assets/taaluka-badge-animation.html?v=transparent-dark"
+                src="/assets/taaluka-badge-animation.html"
                 title="Taaluka animated badge"
                 allowTransparency={true}
-                frameBorder={0}
-                style={{
-                  backgroundColor: "transparent",
-                  colorScheme: "only light",
-                  forcedColorAdjust: "none",
-                }}
                 scrolling="no"
               />
               <img

@@ -564,7 +564,7 @@ export default function Home() {
         <section className="hero-section">
           <div className="hero-copy">
             <h1>
-              <span>“ तालुका ”</span> आपल्या अकोल्याचा
+              <span>“ तालुका ”</span> आपल्या अकोले शहराचा
               <br />
               <span>हक्काचा डिजिटल</span>
               <br />

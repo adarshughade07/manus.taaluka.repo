@@ -22,7 +22,7 @@ import {
 import { toast } from "sonner";
 import { trpc } from "@/lib/trpc";
 
-const LOGO_URL = "/assets/taaluka-logo.png";
+const LOGO_URL = "/assets/taaluka-logo.webp";
 const INSTAGRAM_URL =
   "https://www.instagram.com/taaluka.akole?utm_source=ig_web_button_share_sheet&srtk=ZDNlZDc0MzIxNw==";
 const WHATSAPP_MESSAGE =
@@ -649,8 +649,10 @@ export default function Home() {
               />
               <img
                 className="instagram-mockup-image"
-                src="/assets/taaluka-app-ribbon.png"
+                src="/assets/taaluka-app-ribbon.webp"
                 alt="Taaluka mobile app wrapped in a red ribbon"
+                loading="lazy"
+                decoding="async"
               />
             </div>
           </div>

@@ -165,7 +165,7 @@ a {
       rgba(248, 246, 244, 0.78) 42%,
       rgba(248, 246, 244, 0.55) 100%
     ),
-    url("/assets/akole-hero-desktop.png");
+    url("/assets/akole-hero-desktop.webp");
   background-position: center 62%;
   background-size: cover;
   box-shadow:
@@ -1806,7 +1806,7 @@ h2 em {
         rgba(248, 246, 244, 0.76) 52%,
         rgba(248, 246, 244, 0.68) 100%
       ),
-      url("/assets/akole-hero-mobile.png");
+      url("/assets/akole-hero-mobile.webp");
     background-position: center top;
     background-size: cover;
     filter: grayscale(1) contrast(0.95);

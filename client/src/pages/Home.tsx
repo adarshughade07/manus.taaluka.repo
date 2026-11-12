@@ -25,6 +25,7 @@ import { trpc } from "@/lib/trpc";
 const LOGO_URL = "/assets/taaluka-logo.webp";
 const INSTAGRAM_URL =
   "https://www.instagram.com/taaluka.akole?utm_source=ig_web_button_share_sheet&srtk=ZDNlZDc0MzIxNw==";
+const FOOTER_WHATSAPP_URL = "https://wa.me/919765817117";
 const WHATSAPP_MESSAGE =
   "अकोल्यासाठी काहीतरी खास येतंय — Taaluka च्या early access मध्ये माझ्यासोबत या!";
 const IS_NETLIFY_STATIC = import.meta.env.VITE_NETLIFY_STATIC === "true";
@@ -804,7 +805,7 @@ export default function Home() {
               <a href={INSTAGRAM_URL} target="_blank" rel="noreferrer">
                 <Instagram size={15} /> Instagram
               </a>
-              <a href={whatsappUrl} target="_blank" rel="noreferrer">
+              <a href={FOOTER_WHATSAPP_URL} target="_blank" rel="noreferrer">
                 <MessageCircle size={15} /> WhatsApp
               </a>
             </div>
